@@ -16,7 +16,7 @@ async function app() {
   await holder.initialize()
   issuer.config.logger.info('Agents initialized!')
 
-  const domain = 'sairanjitaw.github.io'
+  const domain = 'sairanjit.github.io'
   const did = `did:web:${domain}`
   const keyId = `${did}#key-1`
 
