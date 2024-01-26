@@ -1,21 +1,29 @@
-# Aries Framework JavaScript Example
+# CREDO TS Usage Examples
 
-This example demonstrates how to use the Aries Framework JavaScript to create a simple agent.
+This examples demonstrates how to use the `Credo ts` to for different features.
 
 ## Getting Started
 
 Make sure you have Node.JS 18+ & Yarn installed.
 
-```
-git clone https://github.com/sairanjitAW/aries-framework-javascript-examples.git
+```sh
+git clone https://github.com/sairanjit/credo-ts-examples.git
 
-cd aries-framework-javascript-examples
+cd credo-ts-examples
 
 yarn install
 ```
 
-## Running
+## Running features
 
+1. Endorse Did
+
+```sh
+yarn endorse-did
 ```
-yarn start
+
+## Cleanup Agents
+
+```sh
+rm -rf ~/.afj
 ```

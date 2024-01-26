@@ -1,5 +1,5 @@
 {
-  "name": "aries-framework-javascript-examples",
+  "name": "credo-ts-examples",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "start": "tsx src/app.ts"
+    "endorse-did": "tsx examples/endorse-did/app.ts"
   },
   "dependencies": {
     "@aries-framework/anoncreds": "0.4.2",

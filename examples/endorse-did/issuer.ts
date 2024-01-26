@@ -20,21 +20,16 @@ import {
   DidsModule,
   HttpOutboundTransport,
   JsonLdCredentialFormatService,
-  KeyDidRegistrar,
-  KeyDidResolver,
   LogLevel,
   ProofsModule,
   V2CredentialProtocol,
   V2ProofProtocol,
-  W3cCredentialsModule,
-  WebDidResolver,
 } from '@aries-framework/core'
 import {
   IndyVdrAnonCredsRegistry,
   IndyVdrIndyDidRegistrar,
   IndyVdrIndyDidResolver,
   IndyVdrModule,
-  IndyVdrSovDidResolver,
 } from '@aries-framework/indy-vdr'
 import { indyVdr } from '@hyperledger/indy-vdr-nodejs'
 import { anoncreds } from '@hyperledger/anoncreds-nodejs'
@@ -45,16 +40,16 @@ import { ariesAskar } from '@hyperledger/aries-askar-nodejs'
 const indyProofFormat = new LegacyIndyProofFormatService()
 const indyCredentialFormat = new LegacyIndyCredentialFormatService()
 
-export const holder = new Agent({
+export const issuer = new Agent({
   config: {
-    label: 'Holder Agent',
+    label: 'Issuer Agent',
     walletConfig: {
-      id: 'holder-agent',
-      key: 'holder-agent-key',
+      id: 'issuer-agent',
+      key: 'issuer-agent-key',
     },
+    endpoints: ['http://localhost:6006/didcomm'],
     // Change to view logs in terminal
     logger: new ConsoleLogger(LogLevel.debug),
-    endpoints: ['http://localhost:6007/didcomm'],
   },
   modules: {
     // Storage
@@ -109,12 +104,12 @@ export const holder = new Agent({
     }),
 
     // Dids
-    // dids: new DidsModule({
-    //   // Support creation of did:indy, did:key dids
-    //   registrars: [new KeyDidRegistrar()],
-    //   // Support resolving of did:indy, did:sov, did:key and did:web dids
-    //   resolvers: [new KeyDidResolver()],
-    // }),
+    dids: new DidsModule({
+      // Support creation of did:indy, did:key dids
+      registrars: [new IndyVdrIndyDidRegistrar()],
+      // Support resolving of did:indy, did:sov, did:key and did:web dids
+      resolvers: [new IndyVdrIndyDidResolver()],
+    }),
 
     // AnonCreds
     anoncreds: new AnonCredsModule({
@@ -154,10 +149,10 @@ export const holder = new Agent({
   dependencies: agentDependencies,
 })
 
-holder.registerInboundTransport(
+issuer.registerInboundTransport(
   new HttpInboundTransport({
-    port: 6007,
+    port: 6006,
     path: '/didcomm',
   })
 )
-holder.registerOutboundTransport(new HttpOutboundTransport())
+issuer.registerOutboundTransport(new HttpOutboundTransport())
