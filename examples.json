@@ -1,5 +1,11 @@
 [
 	{
+		"id": "create-did-jwk",
+		"name": "Create Did Jwk",
+		"path": "examples/create-did-jwk",
+		"description": "Create a did using the `did:jwk` method"
+	},
+	{
 		"id": "create-did-key",
 		"name": "Create Did Key",
 		"path": "examples/create-did-key",

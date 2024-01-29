@@ -31,9 +31,9 @@ jobs:
         run: |
           pnpm extract-examples
 
-          if [ git diff --quiet ]; then
-            echo Branch is clean.
-          else
+          if [ $(git diff --quiet) ]; then
             echo "Git branch dirty. Examples out of date. Please run 'pnpm extract-examples' and commit the changes."
             exit 1
+          else
+            echo Branch is clean.
           fi
