@@ -1,0 +1,4 @@
+{
+  "name": "create-did-key",
+  "description": "Create a did using the `did:key` method"
+}
