@@ -1,0 +1,8 @@
+[
+	{
+		"id": "endorse-did",
+		"name": "Endorse Indy Did",
+		"path": "examples/endorse-did",
+		"description": "Endorse an Indy DID"
+	}
+]

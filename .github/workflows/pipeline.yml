@@ -1,0 +1,37 @@
+name: Pipeline
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Validate
+    steps:
+      - name: Checkout credo-ts-examples
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.6.0
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Check Biome
+        run: pnpm biome ci
+
+      - name: Check examples outdated
+        run: |
+          pnpm extract-examples
+
+          if git diff-files --quiet;
+          then
+              echo "Git branch clean. Examples up to date"
+          else 
+              echo "Git branch dirty. Examples out of date. Please run 'pnpm extract-examples' and commit the changes."
+              exit 1
+          fi
