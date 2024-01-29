@@ -19,10 +19,11 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "example": "tsx ./scripts/run-example.ts",
-    "extract-examples": "tsx ./scripts/extract-examples.ts",
+    "example": "pnpm tsx ./scripts/run-example.ts",
+    "extract-examples": "pnpm tsx ./scripts/extract-examples.ts",
     "biome": "biome check .",
-    "biome:fix": "pnpm biome --apply-unsafe"
+    "biome:fix": "pnpm biome --apply-unsafe",
+    "tsx": "node --require tsx/cjs"
   },
   "dependencies": {
     "@aries-framework/anoncreds": "0.5.0-alpha.91",
