@@ -1,38 +1,47 @@
 {
   "name": "credo-ts-examples",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "private": true,
+  "keywords": [
+    "credo",
+    "credo-ts",
+    "self-sovereign-identity",
+    "openid4vc",
+    "sd-jwt",
+    "w3c-vc",
+    "json-ld",
+    "JWT",
+    "anoncreds",
+    "didcomm",
+    "DIF",
+    "W3C",
+    "TOIP",
+    "OWF"
+  ],
+  "license": "Apache-2.0",
   "scripts": {
-    "endorse-did": "tsx examples/endorse-did/app.ts"
+    "example": "pnpm tsx ./scripts/run-example.ts",
+    "extract-examples": "pnpm tsx ./scripts/extract-examples.ts",
+    "validate": "biome check .",
+    "fix": "pnpm validate --apply-unsafe",
+    "tsx": "node --require tsx/cjs"
   },
   "dependencies": {
-    "@aries-framework/anoncreds": "0.4.2",
-    "@aries-framework/anoncreds-rs": "0.4.2",
-    "@aries-framework/askar": "0.4.2",
-    "@aries-framework/core": "0.4.2",
-    "@aries-framework/indy-vdr": "0.4.2",
-    "@aries-framework/node": "0.4.2",
-    "@hyperledger/anoncreds-nodejs": "^0.1.0",
-    "@hyperledger/aries-askar-nodejs": "0.1.1",
-    "@hyperledger/indy-vdr-nodejs": "^0.1.0",
-    "express": "^4.18.2",
-    "ngrok": "^4.3.3",
-    "qrcode": "^1.5.1"
+    "@aries-framework/anoncreds": "0.5.0-alpha.91",
+    "@aries-framework/anoncreds-rs": "0.5.0-alpha.91",
+    "@aries-framework/askar": "0.5.0-alpha.91",
+    "@aries-framework/core": "0.5.0-alpha.91",
+    "@aries-framework/indy-vdr": "0.5.0-alpha.91",
+    "@aries-framework/node": "0.5.0-alpha.91",
+    "@hyperledger/anoncreds-nodejs": "0.2.0-dev.8",
+    "@hyperledger/aries-askar-nodejs": "0.2.0-dev.5",
+    "@hyperledger/indy-vdr-nodejs": "0.2.0-dev.6"
   },
   "engines": {
     "node": ">=18"
   },
-  "resolutions": {
-    "ref-napi": "npm:@2060.io/ref-napi@^3.0.4"
-  },
   "devDependencies": {
-    "@types/express": "^4.17.17",
+    "@biomejs/biome": "1.5.3",
     "@types/node": "^18.14.0",
-    "@types/qrcode": "^1.5.0",
     "tsx": "^3.12.3"
   }
 }

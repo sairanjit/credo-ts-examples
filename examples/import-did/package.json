@@ -1,0 +1,3 @@
+{
+  "description": "Import an already existing did, optionally resolving it and importing the associated private keys into the wallet."
+}

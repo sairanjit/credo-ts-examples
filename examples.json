@@ -1,0 +1,26 @@
+[
+	{
+		"id": "create-did-jwk",
+		"name": "Create Did Jwk",
+		"path": "examples/create-did-jwk",
+		"description": "Create a did using the `did:jwk` method"
+	},
+	{
+		"id": "create-did-key",
+		"name": "Create Did Key",
+		"path": "examples/create-did-key",
+		"description": "Create a did using the `did:key` method"
+	},
+	{
+		"id": "endorse-indy-did",
+		"name": "Endorse Indy Did",
+		"path": "examples/endorse-indy-did",
+		"description": "Endorse an Indy DID"
+	},
+	{
+		"id": "import-did",
+		"name": "Import Did",
+		"path": "examples/import-did",
+		"description": "Import an already existing did, optionally resolving it and importing the associated private keys into the wallet."
+	}
+]
