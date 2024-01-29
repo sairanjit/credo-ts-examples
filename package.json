@@ -21,8 +21,8 @@
   "scripts": {
     "example": "pnpm tsx ./scripts/run-example.ts",
     "extract-examples": "pnpm tsx ./scripts/extract-examples.ts",
-    "biome": "biome check .",
-    "biome:fix": "pnpm biome --apply-unsafe",
+    "validate": "biome check .",
+    "fix": "pnpm validate --apply-unsafe",
     "tsx": "node --require tsx/cjs"
   },
   "dependencies": {

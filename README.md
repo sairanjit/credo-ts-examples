@@ -37,4 +37,4 @@ If you have an example that you think could be useful to others, and would like 
 After making changes, make sure to run the following commands before opening your PR:
 
 - `pnpm extract-examples`
-- `pnpm biome:fix`
+- `pnpm fix`
