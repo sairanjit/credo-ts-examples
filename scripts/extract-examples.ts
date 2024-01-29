@@ -24,7 +24,7 @@ for (const file of files) {
 
 		examples.push({
 			id: file,
-			name: toHumanCase(packageJson.name),
+			name: toHumanCase(file),
 			path: exampleRelativePath,
 			description: packageJson.description,
 		});
