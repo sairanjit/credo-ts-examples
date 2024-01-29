@@ -36,7 +36,7 @@ for (const file of files) {
 writeFileSync(
 	path.join(rootDir, "examples.json"),
 	// Make sure format matches biome.js
-	`${JSON.stringify(examples, null, '\t')}\n`,
+	`${JSON.stringify(examples, null, "\t")}\n`,
 );
 writeFileSync(path.join(rootDir, "EXAMPLES.md"), generateExamplesMd(examples));
 
