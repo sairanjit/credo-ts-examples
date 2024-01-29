@@ -35,6 +35,7 @@ jobs:
           then
               echo "Git branch clean. Examples up to date"
           else 
+              git diff-files
               echo "Git branch dirty. Examples out of date. Please run 'pnpm extract-examples' and commit the changes."
               exit 1
           fi
