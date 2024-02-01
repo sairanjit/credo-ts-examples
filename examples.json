@@ -1,5 +1,11 @@
 [
 	{
+		"id": "create-did-cheqd",
+		"name": "Create Did Cheqd",
+		"path": "examples/create-did-cheqd",
+		"description": "Create a did using the `did:cheqd` method"
+	},
+	{
 		"id": "create-did-jwk",
 		"name": "Create Did Jwk",
 		"path": "examples/create-did-jwk",

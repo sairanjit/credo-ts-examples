@@ -28,6 +28,7 @@
 	"dependencies": {
 		"@credo-ts/anoncreds": "0.5.0-alpha.114",
 		"@credo-ts/askar": "0.5.0-alpha.114",
+		"@credo-ts/cheqd": "0.5.0-alpha.114",
 		"@credo-ts/core": "0.5.0-alpha.114",
 		"@credo-ts/indy-vdr": "0.5.0-alpha.114",
 		"@credo-ts/node": "0.5.0-alpha.114",
