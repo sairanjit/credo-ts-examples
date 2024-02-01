@@ -1,12 +1,12 @@
-import { AskarModule } from "@aries-framework/askar";
+import { AskarModule } from "@credo-ts/askar";
 import {
 	Agent,
 	ConsoleLogger,
 	KeyType,
 	LogLevel,
 	TypedArrayEncoder,
-} from "@aries-framework/core";
-import { agentDependencies } from "@aries-framework/node";
+} from "@credo-ts/core";
+import { agentDependencies } from "@credo-ts/node";
 import { ariesAskar } from "@hyperledger/aries-askar-nodejs";
 
 async function example() {

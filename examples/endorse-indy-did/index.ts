@@ -1,4 +1,4 @@
-import { KeyType, TypedArrayEncoder } from "@aries-framework/core";
+import { KeyType, TypedArrayEncoder } from "@credo-ts/core";
 import { endorser } from "./endorser";
 import { issuer } from "./issuer";
 
@@ -9,7 +9,7 @@ async function app() {
 
 	const endorserDid = "did:indy:bcovrin:test:4bbYgjU6JbV4DShPbGoQcA";
 	const endorserSeed = "afjdemoverysecure000000000000002";
-	const issuerSeed = "afjdemoverysecure000000000000004";
+	const issuerSeed = "afjdemoverysecure000000000000005";
 
 	// Import endorser DID
 	await endorser.dids.import({

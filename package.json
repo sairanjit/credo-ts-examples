@@ -1,47 +1,46 @@
 {
-  "name": "credo-ts-examples",
-  "private": true,
-  "keywords": [
-    "credo",
-    "credo-ts",
-    "self-sovereign-identity",
-    "openid4vc",
-    "sd-jwt",
-    "w3c-vc",
-    "json-ld",
-    "JWT",
-    "anoncreds",
-    "didcomm",
-    "DIF",
-    "W3C",
-    "TOIP",
-    "OWF"
-  ],
-  "license": "Apache-2.0",
-  "scripts": {
-    "example": "pnpm tsx ./scripts/run-example.ts",
-    "extract-examples": "pnpm tsx ./scripts/extract-examples.ts",
-    "validate": "biome check .",
-    "fix": "pnpm validate --apply-unsafe",
-    "tsx": "node --require tsx/cjs"
-  },
-  "dependencies": {
-    "@aries-framework/anoncreds": "0.5.0-alpha.91",
-    "@aries-framework/anoncreds-rs": "0.5.0-alpha.91",
-    "@aries-framework/askar": "0.5.0-alpha.91",
-    "@aries-framework/core": "0.5.0-alpha.91",
-    "@aries-framework/indy-vdr": "0.5.0-alpha.91",
-    "@aries-framework/node": "0.5.0-alpha.91",
-    "@hyperledger/anoncreds-nodejs": "0.2.0-dev.8",
-    "@hyperledger/aries-askar-nodejs": "0.2.0-dev.5",
-    "@hyperledger/indy-vdr-nodejs": "0.2.0-dev.6"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.5.3",
-    "@types/node": "^18.14.0",
-    "tsx": "^3.12.3"
-  }
+	"name": "credo-ts-examples",
+	"private": true,
+	"keywords": [
+		"credo",
+		"credo-ts",
+		"self-sovereign-identity",
+		"openid4vc",
+		"sd-jwt",
+		"w3c-vc",
+		"json-ld",
+		"JWT",
+		"anoncreds",
+		"didcomm",
+		"DIF",
+		"W3C",
+		"TOIP",
+		"OWF"
+	],
+	"license": "Apache-2.0",
+	"scripts": {
+		"example": "pnpm tsx ./scripts/run-example.ts",
+		"extract-examples": "pnpm tsx ./scripts/extract-examples.ts",
+		"validate": "biome check .",
+		"fix": "pnpm validate --apply-unsafe",
+		"tsx": "node --require tsx/cjs"
+	},
+	"dependencies": {
+		"@credo-ts/anoncreds": "0.5.0-alpha.114",
+		"@credo-ts/askar": "0.5.0-alpha.114",
+		"@credo-ts/core": "0.5.0-alpha.114",
+		"@credo-ts/indy-vdr": "0.5.0-alpha.114",
+		"@credo-ts/node": "0.5.0-alpha.114",
+		"@hyperledger/anoncreds-nodejs": "0.2.0-dev.9",
+		"@hyperledger/aries-askar-nodejs": "0.2.0-dev.6",
+		"@hyperledger/indy-vdr-nodejs": "0.2.0-dev.6"
+	},
+	"engines": {
+		"node": ">=18"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.5.3",
+		"@types/node": "^18.14.0",
+		"tsx": "^3.12.3"
+	}
 }
