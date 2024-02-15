@@ -28,5 +28,11 @@
 		"name": "Import Did",
 		"path": "examples/import-did",
 		"description": "Import an already existing did, optionally resolving it and importing the associated private keys into the wallet."
+	},
+	{
+		"id": "issue-bbs-credentials",
+		"name": "Issue Bbs Credentials",
+		"path": "examples/issue-bbs-credentials",
+		"description": "Issue a W3C credentials using bbs signatures"
 	}
 ]
