@@ -1,11 +1,11 @@
-import { issuer } from "./issuer";
-import { holder } from "./holder";
 import {
-	KeyType,
-	TypedArrayEncoder,
-	SECURITY_CONTEXT_BBS_URL,
 	CREDENTIALS_CONTEXT_V1_URL,
+	KeyType,
+	SECURITY_CONTEXT_BBS_URL,
+	TypedArrayEncoder,
 } from "@aries-framework/core";
+import { holder } from "./holder";
+import { issuer } from "./issuer";
 
 async function app() {
 	await issuer.initialize();

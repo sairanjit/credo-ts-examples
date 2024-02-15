@@ -1,5 +1,5 @@
 import { AskarModule } from "@credo-ts/askar";
-import { agentDependencies, HttpInboundTransport } from "@credo-ts/node";
+import { BbsModule } from "@credo-ts/bbs-signatures";
 import {
 	Agent,
 	AutoAcceptCredential,
@@ -11,8 +11,8 @@ import {
 	LogLevel,
 	V2CredentialProtocol,
 } from "@credo-ts/core";
+import { HttpInboundTransport, agentDependencies } from "@credo-ts/node";
 import { ariesAskar } from "@hyperledger/aries-askar-nodejs";
-import { BbsModule } from "@credo-ts/bbs-signatures";
 
 export const issuer = new Agent({
 	config: {
