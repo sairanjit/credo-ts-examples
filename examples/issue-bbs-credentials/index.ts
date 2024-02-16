@@ -3,7 +3,7 @@ import {
 	KeyType,
 	SECURITY_CONTEXT_BBS_URL,
 	TypedArrayEncoder,
-} from "@aries-framework/core";
+} from "@credo-ts/core";
 import { holder } from "./holder";
 import { issuer } from "./issuer";
 
@@ -83,9 +83,29 @@ async function app() {
 	});
 
 	// Accept the invitation
-	const outOfBandRecord = await holder.oob.receiveInvitation(
+	const { connectionRecord } = await holder.oob.receiveInvitation(
 		inv.outOfBandInvitation,
 	);
+
+	if (!connectionRecord) {
+		throw new Error("Connection not found");
+	}
+
+	// Wait for connection to be established
+	await holder.connections.returnWhenIsConnected(connectionRecord.id);
+
+	// Adding delay to ensure that the connection is established
+	await new Promise((resolve) => setTimeout(resolve, 5000));
+
+	// Get and Accept the credential
+	const credentials = await holder.credentials.getAll();
+
+	holder.config.logger.info("Credentials: ", credentials);
+
+	// Accept the credential offer from the first credential in the list
+	const credentialRecord = await holder.credentials.acceptOffer({
+		credentialRecordId: credentials[0].id,
+	});
 }
 
 app();

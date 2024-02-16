@@ -40,7 +40,7 @@ export const holder = new Agent({
 
 		// Credentials module
 		credentials: new CredentialsModule({
-			autoAcceptCredentials: AutoAcceptCredential.Always,
+			autoAcceptCredentials: AutoAcceptCredential.ContentApproved,
 
 			// Only v2 Credential Protocol supports jsonld
 			credentialProtocols: [

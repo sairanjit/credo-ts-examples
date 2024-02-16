@@ -33,6 +33,6 @@
 		"id": "issue-bbs-credentials",
 		"name": "Issue Bbs Credentials",
 		"path": "examples/issue-bbs-credentials",
-		"description": "Issue a W3C credentials using bbs signatures"
+		"description": "Issue a W3C credential using BBS+ signatures"
 	}
 ]
