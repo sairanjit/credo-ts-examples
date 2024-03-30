@@ -1,5 +1,11 @@
 [
 	{
+		"id": "anoncreds-w3c",
+		"name": "Anoncreds w3c",
+		"path": "examples/anoncreds-w3c",
+		"description": "AnonCreds issuance and verification with pex"
+	},
+	{
 		"id": "create-did-cheqd",
 		"name": "Create Did Cheqd",
 		"path": "examples/create-did-cheqd",
