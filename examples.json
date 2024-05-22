@@ -34,5 +34,23 @@
 		"name": "Issue Bbs Credentials",
 		"path": "examples/issue-bbs-credentials",
 		"description": "Issue a W3C credential using BBS+ signatures"
+	},
+	{
+		"id": "issue-bbs-credentials-test",
+		"name": "Issue Bbs Credentials Test",
+		"path": "examples/issue-bbs-credentials-test",
+		"description": "Issue a W3C credential using BBS+ signatures"
+	},
+	{
+		"id": "verify-cred",
+		"name": "Verify Cred",
+		"path": "examples/verify-cred",
+		"description": "Verify credentials"
+	},
+	{
+		"id": "verify-credentials",
+		"name": "Verify Credentials",
+		"path": "examples/verify-credentials",
+		"description": "Verify credentials"
 	}
 ]

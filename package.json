@@ -27,16 +27,17 @@
 		"tsx": "node --require tsx/cjs"
 	},
 	"dependencies": {
-		"@credo-ts/anoncreds": "0.5.0-alpha.114",
-		"@credo-ts/askar": "0.5.0-alpha.114",
-		"@credo-ts/bbs-signatures": "0.5.0-alpha.114",
-		"@credo-ts/cheqd": "0.5.0-alpha.114",
-		"@credo-ts/core": "0.5.0-alpha.114",
-		"@credo-ts/indy-vdr": "0.5.0-alpha.114",
-		"@credo-ts/node": "0.5.0-alpha.114",
-		"@hyperledger/anoncreds-nodejs": "0.2.0-dev.9",
-		"@hyperledger/aries-askar-nodejs": "0.2.0-dev.6",
-		"@hyperledger/indy-vdr-nodejs": "0.2.0-dev.6"
+		"@credo-ts/anoncreds": "0.5.3",
+		"@credo-ts/askar": "0.5.3",
+		"@credo-ts/bbs-signatures": "0.5.3",
+		"@credo-ts/cheqd": "0.5.3",
+		"@credo-ts/core": "0.5.3",
+		"@credo-ts/indy-vdr": "0.5.3",
+		"@credo-ts/node": "0.5.3",
+		"@hyperledger/anoncreds-nodejs": "^0.2.0",
+		"@hyperledger/aries-askar-nodejs": "^0.2.0",
+		"@hyperledger/indy-vdr-nodejs": "^0.2.0",
+		"rxjs": "^7.8.1"
 	},
 	"engines": {
 		"node": ">=18"

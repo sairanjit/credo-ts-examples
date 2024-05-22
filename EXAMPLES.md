@@ -8,4 +8,7 @@
 - [Create Did Key](./examples/create-did-key) (`create-did-key`) - Create a did using the `did:key` method
 - [Endorse Indy Did](./examples/endorse-indy-did) (`endorse-indy-did`) - Endorse an Indy DID
 - [Import Did](./examples/import-did) (`import-did`) - Import an already existing did, optionally resolving it and importing the associated private keys into the wallet.
-- [Issue BBS Credentials](./examples/issue-bbs-credentials) (`issue-bbs-credentials`) - Issue a W3C credential using BBS+ signatures
+- [Issue Bbs Credentials](./examples/issue-bbs-credentials) (`issue-bbs-credentials`) - Issue a W3C credential using BBS+ signatures
+- [Issue Bbs Credentials Test](./examples/issue-bbs-credentials-test) (`issue-bbs-credentials-test`) - Issue a W3C credential using BBS+ signatures
+- [Verify Cred](./examples/verify-cred) (`verify-cred`) - Verify credentials
+- [Verify Credentials](./examples/verify-credentials) (`verify-credentials`) - Verify credentials
