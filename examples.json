@@ -1,5 +1,11 @@
 [
 	{
+		"id": "connection-reuse",
+		"name": "Connection Reuse",
+		"path": "examples/connection-reuse",
+		"description": "Reusing a connection"
+	},
+	{
 		"id": "create-did-cheqd",
 		"name": "Create Did Cheqd",
 		"path": "examples/create-did-cheqd",
