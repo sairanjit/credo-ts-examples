@@ -27,15 +27,15 @@
 		"tsx": "node --require tsx/cjs"
 	},
 	"dependencies": {
-		"@credo-ts/anoncreds": "^0.5.0",
-		"@credo-ts/askar": "^0.5.0",
-		"@credo-ts/bbs-signatures": "^0.5.0",
-		"@credo-ts/cheqd": "^0.5.0",
-		"@credo-ts/core": "^0.5.0",
-		"@credo-ts/indy-vdr": "^0.5.0",
-		"@credo-ts/node": "^0.5.0",
-		"@hyperledger/anoncreds-nodejs": "^0.2.2",
-		"@hyperledger/aries-askar-nodejs": "^0.2.2",
+		"@credo-ts/anoncreds": "^0.5.15",
+		"@credo-ts/askar": "^0.5.15",
+		"@credo-ts/bbs-signatures": "^0.5.15",
+		"@credo-ts/cheqd": "^0.5.15",
+		"@credo-ts/core": "^0.5.15",
+		"@credo-ts/indy-vdr": "^0.5.15",
+		"@credo-ts/node": "^0.5.15",
+		"@hyperledger/anoncreds-nodejs": "^0.2.4",
+		"@hyperledger/aries-askar-nodejs": "^0.2.3",
 		"@hyperledger/indy-vdr-nodejs": "^0.2.2"
 	},
 	"engines": {
@@ -45,5 +45,6 @@
 		"@biomejs/biome": "1.5.3",
 		"@types/node": "^22.0.0",
 		"tsx": "^4.0.0"
-	}
+	},
+  "packageManager": "pnpm@9.15.3+sha512.1f79bc245a66eb0b07c5d4d83131240774642caaa86ef7d0434ab47c0d16f66b04e21e0c086eb61e62c77efc4d7f7ec071afad3796af64892fae66509173893a"
 }
