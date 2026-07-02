@@ -5,30 +5,24 @@ import {
 	CheqdDidResolver,
 	CheqdModule,
 } from "@credo-ts/cheqd";
-import {
-	Agent,
-	ConsoleLogger,
-	DidsModule,
-	LogLevel,
-	TypedArrayEncoder,
-} from "@credo-ts/core";
+import { Agent, ConsoleLogger, DidsModule, LogLevel } from "@credo-ts/core";
 import { agentDependencies } from "@credo-ts/node";
-import { ariesAskar } from "@hyperledger/aries-askar-nodejs";
+import { askar } from "@openwallet-foundation/askar-nodejs";
 
 async function example() {
 	const agent = new Agent({
 		config: {
 			label: "Create did:cheqd",
 			logger: new ConsoleLogger(LogLevel.debug),
-			walletConfig: {
-				id: "create-did-cheqd-wallet",
-				key: "create-did-cheqd-wallet",
-			},
 		},
 		dependencies: agentDependencies,
 		modules: {
 			askar: new AskarModule({
-				ariesAskar,
+				askar,
+				store: {
+					id: "create-did-cheqd-wallet",
+					key: "create-did-cheqd-wallet",
+				},
 			}),
 
 			// CheqdModule
@@ -54,27 +48,20 @@ async function example() {
 
 	await agent.initialize();
 
-	// Generate a seed and get private key from it
-	const privateKey = TypedArrayEncoder.fromString(
-		Array(32 + 1)
-			.join(`${Math.random().toString(36)}00000000000000000`.slice(2, 18))
-			.slice(0, 32),
-	);
-
 	// CheqdDidCreateOptions provided the required interface for creating
-	// a did:cheqd DID.
+	// a did:cheqd DID. As of 0.6 the signing key is generated in the KMS via
+	// `createKey` instead of passing a raw private key through `secret`.
 	const didResult = await agent.dids.create<CheqdDidCreateOptions>({
 		method: "cheqd",
-		secret: {
-			verificationMethod: {
-				id: "key-1",
-				type: "Ed25519VerificationKey2018",
-				privateKey,
-			},
-		},
 		options: {
 			network: "testnet",
 			methodSpecificIdAlgo: "base58btc",
+			createKey: {
+				type: {
+					kty: "OKP",
+					crv: "Ed25519",
+				},
+			},
 		},
 	});
 

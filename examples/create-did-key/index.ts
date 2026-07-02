@@ -3,26 +3,25 @@ import {
 	Agent,
 	ConsoleLogger,
 	KeyDidCreateOptions,
-	KeyType,
 	LogLevel,
 } from "@credo-ts/core";
 import { agentDependencies } from "@credo-ts/node";
-import { ariesAskar } from "@hyperledger/aries-askar-nodejs";
+import { askar } from "@openwallet-foundation/askar-nodejs";
 
 async function example() {
 	const agent = new Agent({
 		config: {
 			label: "Create did:key",
 			logger: new ConsoleLogger(LogLevel.debug),
-			walletConfig: {
-				id: "create-did-key-wallet",
-				key: "create-did-key-wallet",
-			},
 		},
 		dependencies: agentDependencies,
 		modules: {
 			askar: new AskarModule({
-				ariesAskar,
+				askar,
+				store: {
+					id: "create-did-key-wallet",
+					key: "create-did-key-wallet",
+				},
 			}),
 		},
 	});
@@ -34,15 +33,16 @@ async function example() {
 	const didResult = await agent.dids.create<KeyDidCreateOptions>({
 		method: "key",
 		options: {
-			// key type specifies which type of key will be used for the did:key DID.
-			// For askar you can use `Ed25519`, `X25519`, `P256`, `BLS12381G1`, `BLS12381G2`, `BLS12381G1G2`
-			keyType: KeyType.Ed25519,
-		},
-		secret: {
-			// You can optionally provide a privateKey or seed to consistently generate the same DID.
-			// privateKey: TypedArrayEncoder.fromString(
-			// 	"c1fb70daced48f10598d5525c570d390",
-			// ),
+			// `createKey` describes the key that will be generated in the KMS and
+			// used for the did:key DID. For askar you can use `Ed25519`, `X25519`, `P-256`, ...
+			createKey: {
+				type: {
+					kty: "OKP",
+					crv: "Ed25519",
+				},
+			},
+			// Alternatively, if you already have a key in the KMS you can reference it
+			// by passing `{ keyId: "<existing-key-id>" }` instead of `createKey`.
 		},
 	});
 
