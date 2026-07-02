@@ -1,4 +1,8 @@
-import { KeyType, TypedArrayEncoder } from "@credo-ts/core";
+import {
+	transformPrivateKeyToPrivateJwk,
+	transformSeedToPrivateJwk,
+} from "@credo-ts/askar";
+import { TypedArrayEncoder } from "@credo-ts/core";
 import { endorser } from "./endorser";
 import { issuer } from "./issuer";
 
@@ -11,16 +15,38 @@ async function app() {
 	const endorserSeed = "afjdemoverysecure000000000000002";
 	const issuerSeed = "afjdemoverysecure000000000000005";
 
+	// As of 0.6 keys are managed by the KMS. Import the endorser's private key into the
+	// KMS to obtain a `keyId`, then import the DID linking its `#verkey` verification
+	// method (the standard did:indy verification method) to that key.
+	const { privateJwk: endorserPrivateJwk } = transformPrivateKeyToPrivateJwk({
+		type: { kty: "OKP", crv: "Ed25519" },
+		privateKey: TypedArrayEncoder.fromString(endorserSeed),
+	});
+	const { keyId: endorserKeyId } = await endorser.kms.importKey({
+		privateJwk: endorserPrivateJwk,
+	});
+
 	// Import endorser DID
 	await endorser.dids.import({
 		did: endorserDid,
 		overwrite: true,
-		privateKeys: [
+		keys: [
 			{
-				keyType: KeyType.Ed25519,
-				privateKey: TypedArrayEncoder.fromString(endorserSeed),
+				kmsKeyId: endorserKeyId,
+				didDocumentRelativeKeyId: "#verkey",
 			},
 		],
+	});
+
+	// Import the issuer's key (derived from a seed) into the KMS, so the new did:indy
+	// is created deterministically from it. The resulting `keyId` is passed to
+	// `dids.create` instead of the previous `secret.seed`.
+	const { privateJwk: issuerPrivateJwk } = transformSeedToPrivateJwk({
+		type: { kty: "OKP", crv: "Ed25519" },
+		seed: TypedArrayEncoder.fromString(issuerSeed),
+	});
+	const { keyId: issuerKeyId } = await issuer.kms.importKey({
+		privateJwk: issuerPrivateJwk,
 	});
 
 	// Create issuer DID
@@ -29,13 +55,17 @@ async function app() {
 		options: {
 			endorserMode: "external",
 			endorserDid,
-		},
-		secret: {
-			seed: TypedArrayEncoder.fromString(issuerSeed),
+			keyId: issuerKeyId,
 		},
 	});
 
 	issuer.config.logger.info("DID state!", did);
+
+	if (did.didState.state !== "action") {
+		throw new Error(
+			`Expected did state to be 'action', but got '${did.didState.state}'`,
+		);
+	}
 
 	// Endorse issuer DID with endorser
 	const signedNymRequest = await endorser.modules.indyVdr.endorseTransaction(
@@ -53,9 +83,6 @@ async function app() {
 			endorsedTransaction: {
 				nymRequest: signedNymRequest,
 			},
-		},
-		secret: {
-			seed: TypedArrayEncoder.fromString(issuerSeed),
 		},
 	});
 

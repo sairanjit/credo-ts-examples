@@ -27,16 +27,16 @@
 		"tsx": "node --require tsx/cjs"
 	},
 	"dependencies": {
-		"@credo-ts/anoncreds": "^0.5.15",
-		"@credo-ts/askar": "^0.5.15",
-		"@credo-ts/bbs-signatures": "^0.5.15",
-		"@credo-ts/cheqd": "^0.5.15",
-		"@credo-ts/core": "^0.5.15",
-		"@credo-ts/indy-vdr": "^0.5.15",
-		"@credo-ts/node": "^0.5.15",
-		"@hyperledger/anoncreds-nodejs": "^0.2.4",
-		"@hyperledger/aries-askar-nodejs": "^0.2.3",
-		"@hyperledger/indy-vdr-nodejs": "^0.2.2"
+		"@credo-ts/anoncreds": "^0.6.0",
+		"@credo-ts/askar": "^0.6.0",
+		"@credo-ts/cheqd": "^0.6.0",
+		"@credo-ts/core": "^0.6.0",
+		"@credo-ts/didcomm": "^0.6.0",
+		"@credo-ts/indy-vdr": "^0.6.0",
+		"@credo-ts/node": "^0.6.0",
+		"@hyperledger/anoncreds-nodejs": "^0.3.4",
+		"@hyperledger/indy-vdr-nodejs": "^0.2.4",
+		"@openwallet-foundation/askar-nodejs": "0.6.0"
 	},
 	"engines": {
 		"node": ">=18"

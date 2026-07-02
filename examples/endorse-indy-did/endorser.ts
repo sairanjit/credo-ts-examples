@@ -1,38 +1,31 @@
 import { AnonCredsModule } from "@credo-ts/anoncreds";
 import { AskarModule } from "@credo-ts/askar";
-import {
-	Agent,
-	ConsoleLogger,
-	DidsModule,
-	HttpOutboundTransport,
-	LogLevel,
-} from "@credo-ts/core";
+import { Agent, ConsoleLogger, DidsModule, LogLevel } from "@credo-ts/core";
 import {
 	IndyVdrAnonCredsRegistry,
 	IndyVdrIndyDidRegistrar,
 	IndyVdrIndyDidResolver,
 	IndyVdrModule,
 } from "@credo-ts/indy-vdr";
-import { HttpInboundTransport, agentDependencies } from "@credo-ts/node";
+import { agentDependencies } from "@credo-ts/node";
 import { anoncreds } from "@hyperledger/anoncreds-nodejs";
-import { ariesAskar } from "@hyperledger/aries-askar-nodejs";
 import { indyVdr } from "@hyperledger/indy-vdr-nodejs";
+import { askar } from "@openwallet-foundation/askar-nodejs";
 
 export const endorser = new Agent({
 	config: {
 		label: "endorser Agent",
-		walletConfig: {
-			id: "endorser-agent",
-			key: "endorser-agent-key",
-		},
-		endpoints: ["http://localhost:7006/didcomm"],
 		// Change to view logs in terminal
 		logger: new ConsoleLogger(LogLevel.debug),
 	},
 	modules: {
 		// Storage
 		askar: new AskarModule({
-			ariesAskar,
+			askar,
+			store: {
+				id: "endorser-agent",
+				key: "endorser-agent-key",
+			},
 		}),
 
 		// Dids
@@ -66,11 +59,3 @@ export const endorser = new Agent({
 	},
 	dependencies: agentDependencies,
 });
-
-endorser.registerInboundTransport(
-	new HttpInboundTransport({
-		port: 7006,
-		path: "/didcomm",
-	}),
-);
-endorser.registerOutboundTransport(new HttpOutboundTransport());

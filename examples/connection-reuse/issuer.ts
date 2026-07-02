@@ -1,43 +1,43 @@
 import { AskarModule } from "@credo-ts/askar";
-import {
-	Agent,
-	ConnectionsModule,
-	ConsoleLogger,
-	HttpOutboundTransport,
-	LogLevel,
-} from "@credo-ts/core";
-import { HttpInboundTransport, agentDependencies } from "@credo-ts/node";
-import { ariesAskar } from "@hyperledger/aries-askar-nodejs";
+import { Agent, ConsoleLogger, LogLevel } from "@credo-ts/core";
+import { DidCommHttpOutboundTransport, DidCommModule } from "@credo-ts/didcomm";
+import { DidCommHttpInboundTransport, agentDependencies } from "@credo-ts/node";
+import { askar } from "@openwallet-foundation/askar-nodejs";
 
 export const issuer = new Agent({
 	config: {
 		label: "Holder Agent 1",
-		walletConfig: {
-			id: "holder-agent-id-1",
-			key: "holder-agent-key",
-		},
-		endpoints: ["http://localhost:6008/didcomm"],
 		logger: new ConsoleLogger(LogLevel.trace),
 	},
 	modules: {
 		// Storage Module
 		askar: new AskarModule({
-			ariesAskar,
+			askar,
+			store: {
+				id: "holder-agent-id-1",
+				key: "holder-agent-key",
+			},
 		}),
 
-		// Connections module is enabled by default, but we can
-		// override the default configuration
-		connections: new ConnectionsModule({
-			autoAcceptConnections: true,
+		// As of 0.6 DIDComm lives in its own module. Endpoints, transports and the
+		// connections configuration are all provided through the DidCommModule.
+		didcomm: new DidCommModule({
+			endpoints: ["http://localhost:6008/didcomm"],
+			// Connections are always enabled, but we can override the default configuration
+			connections: {
+				autoAcceptConnections: true,
+			},
 		}),
 	},
 	dependencies: agentDependencies,
 });
 
-issuer.registerInboundTransport(
-	new HttpInboundTransport({
+issuer.modules.didcomm.registerInboundTransport(
+	new DidCommHttpInboundTransport({
 		port: 6008,
 		path: "/didcomm",
 	}),
 );
-issuer.registerOutboundTransport(new HttpOutboundTransport());
+issuer.modules.didcomm.registerOutboundTransport(
+	new DidCommHttpOutboundTransport(),
+);
